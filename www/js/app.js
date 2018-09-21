@@ -31,7 +31,8 @@ angular.module('starter', ['ionic'])
 
     // Define the URL for our server. As we are only running it locally, we will
     // use localhost.
-    var SERVER_URL = 'ws://localhost:7007';
+    //var SERVER_URL = 'ws://localhost:7007';
+    var SERVER_URL = 'ws://localhost:8080/websocket/chat/Ionic';
     // This is a variable for our WebSocket.
     var ws;
 
@@ -146,7 +147,9 @@ angular.module('starter', ['ionic'])
     /** This is the scope function that is called when a users hits send. */
     $scope.sendMessage = function sendMessage(msg) {
         // Create a variable for our message (append their message to their name).
-        var nameAndMsg = $scope.userName + ": " + msg;
+        //var nameAndMsg = $scope.userName + ": " + msg;
+
+        var nameAndMsg = "{\"from\":\"" + $scope.userName + "\",\"content\":\"" + msg +" \"}";
         // Send the data to our WebSocket connection.
         ws.send(nameAndMsg);
     };
